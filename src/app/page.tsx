@@ -24,6 +24,8 @@ export default function Home() {
 
 	const [fileChatId, setFileChatId] = useState('')
 	const [urlFile, setUrlFile] = useState('')
+	const [fileName, setFileName] = useState('')
+	const [caption, setCaption] = useState('')
 
 	const {
 		response,
@@ -88,13 +90,21 @@ export default function Home() {
 						<SendFileForm
 							chatId={fileChatId}
 							urlFile={urlFile}
+							fileName={fileName}
+							caption={caption}
 							onChatIdChange={setFileChatId}
 							onUrlFileChange={setUrlFile}
+							onFileNameChange={setFileName}
+							onCaptionChange={setCaption}
 						/>
 						<Button
 							className='w-full'
-							disabled={loading || !isCredsValid || !fileChatId || !urlFile}
-							onClick={() => sendFileByUrl(creds, fileChatId, urlFile)}
+							disabled={
+								loading || !isCredsValid || !fileChatId || !urlFile || !fileName
+							}
+							onClick={() =>
+								sendFileByUrl(creds, fileChatId, urlFile, fileName, caption)
+							}
 						>
 							Отправить файл
 						</Button>

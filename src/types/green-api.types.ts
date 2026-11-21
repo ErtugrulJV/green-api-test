@@ -41,8 +41,8 @@ export interface ISendMessageResponse {
 export interface ISendFileByUrlPayload {
 	chatId: string
 	urlFile: string
-	fileName?: string
-	caption?: string
+	fileName: string
+	caption: string
 }
 
 export interface ISendFileByUrlResponse {

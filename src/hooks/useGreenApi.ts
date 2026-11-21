@@ -34,6 +34,11 @@ export function useGreenApi() {
 			creds: IGreenCredentials,
 			chatId: string,
 			urlFile: string,
-		) => call(() => greenApi.sendFileByUrl(creds, { chatId, urlFile })),
+			fileName: string,
+			caption: string,
+		) =>
+			call(() =>
+				greenApi.sendFileByUrl(creds, { chatId, urlFile, fileName, caption }),
+			),
 	}
 }

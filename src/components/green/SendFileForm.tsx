@@ -4,13 +4,21 @@ import { Label } from '@/components/ui/label'
 interface SendFileFormProps {
 	chatId: string
 	urlFile: string
+	fileName: string
+	caption: string
 	onChatIdChange: (val: string) => void
 	onUrlFileChange: (val: string) => void
+	onFileNameChange: (val: string) => void
+	onCaptionChange: (val: string) => void
 }
 
 export function SendFileForm({
 	chatId,
 	urlFile,
+	fileName,
+	caption,
+	onFileNameChange,
+	onCaptionChange,
 	onChatIdChange,
 	onUrlFileChange,
 }: SendFileFormProps) {
@@ -33,6 +41,24 @@ export function SendFileForm({
 					value={urlFile}
 					onChange={e => onUrlFileChange(e.target.value)}
 					placeholder='https://example.com/image.png'
+				/>
+			</div>
+			<div className='space-y-2'>
+				<Label htmlFor='fileName'>Имя файла (с расширением)</Label>
+				<Input
+					id='fileName'
+					value={fileName}
+					onChange={e => onFileNameChange(e.target.value)}
+					placeholder='image.jpg'
+				/>
+			</div>
+			<div className='space-y-2'>
+				<Label htmlFor='caption'>Подпись (необязательно)</Label>
+				<Input
+					id='caption'
+					value={caption}
+					onChange={e => onCaptionChange(e.target.value)}
+					placeholder='Смотри какой файл!'
 				/>
 			</div>
 		</div>
